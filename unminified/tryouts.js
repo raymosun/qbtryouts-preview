@@ -81,11 +81,11 @@ async function askQuestion(questionText){
     while(words.length > 0){
         const word = words.shift();
         question.innerHTML += `<span>${word} </span>`;
-        await sleep(200);
+        await sleep(300);
     }
 
-    updateTimer(5000, function(){})
-    await sleep(5000);
+    updateTimer(8000, function(){})
+    await sleep(8000);
 
     question.innerHTML = '<span class="noquestion"><em>question</em></span>';
     showConfirmation({
