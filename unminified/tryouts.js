@@ -29,8 +29,8 @@ async function startTryouts(){
 }
 
 async function runTryouts(){
+    hideSkip();
     await sleep(200);
-    console.log('starting questions')
 
     for(var i = 0; i < questions.length; i++){
         status.innerHTML = `in progress (${i+1}/3)`;
@@ -134,9 +134,11 @@ function showConfirmation(confirmation){
 }
 
 function skipTimer(){
-    console.log('skipping');
     updateTimer(0, function(){});
     skipping = true;
+}
+
+function hideSkip(){
     skip.disabled = true;
     skip.style.opacity = 0;
     skip.style.visibility = 'hidden';
