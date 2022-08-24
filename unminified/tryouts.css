@@ -76,6 +76,14 @@ li {
 .noquestion {
     color: #777777;
 }
+.status-bar {
+    display: flex;
+}
+.skip {
+    margin-left: auto;
+    float: right;
+    transition: visibility 0s 250ms, opacity 250ms linear;
+}
 
 @keyframes fadein {
     0% { opacity: 0; }

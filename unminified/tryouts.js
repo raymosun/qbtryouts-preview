@@ -7,6 +7,7 @@ const form = document.querySelector('form');
 const confirmations = document.querySelector('.confirmations');
 const userinfo = document.querySelector('.userinfo');
 const answer = document.querySelector('input');
+const skip = document.querySelector('.skip');
 
 const questions = [
     "Who was the first president of the United States?",
@@ -18,12 +19,18 @@ form.addEventListener('submit', event => {
     event.preventDefault();
 });
 
-runTryouts();
+let skipping = false;
+
+startTryouts();
+
+async function startTryouts(){
+    status.innerHTML = 'starting soon...'
+    updateTimer(30000, runTryouts);
+}
 
 async function runTryouts(){
-    status.innerHTML = 'starting soon...'
-    updateTimer(30000, function(){});
-    await sleep(30200);
+    await sleep(200);
+    console.log('starting questions')
 
     for(var i = 0; i < questions.length; i++){
         status.innerHTML = `in progress (${i+1}/3)`;
@@ -43,6 +50,10 @@ function sleep(ms){
 }
 
 async function updateTimer(duration,endFunction,countUp=false,startTime=Date.now(),currentTime=startTime){
+    if (skipping){
+        skipping = false;
+        return endFunction();
+    }
     const timeLeft = Math.max(duration-(currentTime-startTime), 0);
 
     var minutes = Math.floor(timeLeft/1000/60);
@@ -120,4 +131,13 @@ function showConfirmation(confirmation){
     message.append(userAnswer)
     message.append(ending);
     confirmations.prepend(message);
+}
+
+function skipTimer(){
+    console.log('skipping');
+    updateTimer(0, function(){});
+    skipping = true;
+    skip.disabled = true;
+    skip.style.opacity = 0;
+    skip.style.visibility = 'hidden';
 }

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
     <title>Academic League Tryouts</title>
-    <link rel="stylesheet" type="text/css" href="/tryouts.min.css">
+    <link rel="stylesheet" type="text/css" href="./tryouts.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <script src="/tryouts.min.js" defer></script>
+    <script src="./tryouts.min.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -15,7 +15,13 @@
             <h1 class="title">tryouts</h1>
             <p class="userinfo"></p>
         </header>
-        <h4>Status: <span class="status"></span></h4>
+        <div class="status-bar">
+            <h4>Status: <span class="status"></span></h4>
+        <button class="skip" onclick="skipTimer()">
+            Skip timer (demo only)
+        </button>
+        </div>
+        
         <div class=timer>
             <p class="time">
                 <span class=main-time>0:00</span><span class="deciseconds">.0</span>
